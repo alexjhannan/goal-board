@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Completions</h2>
+
+
+    <div ng-model="completes" ui-sortable>
+		<p class="input-group" ng-repeat="complete in completes" style="padding: 5px 10px;">
+			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
+            <input type="text" ng-model="complete.name" class="form-control" />
+            <span class="input-group-addon">{{ complete.pomos }}</span>
+			<span class="input-group-btn">
+				<button class="btn btn-danger" ng-click="removeComplete($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+			</span>
+		</p>
+	</div>
+    
+    <div class="footer">
+      <div class="container">
+        <p class="text-center">...starts with small stones...</p>
+        <h4>Completion Stats<br /><small><small>(assumes 30 minutes per pomodoro)</small></small></h4>
+        <p>Value of all completions to date: <strong>{{ count }}</strong></p>
+        <p>Total time spent goaling: <strong>{{ count * 30 + ' minutes' }}</strong></p>
+      </div>
+    </div>
+    
+</div>

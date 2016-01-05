@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Rewards</h2>
+    <p>Current Spendable Points: {{ count - spent }}</p>
+
+
+    <div ng-model="rewards" ui-sortable>
+		<p class="input-group" ng-repeat="reward in rewards" style="padding: 5px 10px;">
+			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
+            <input type="text" ng-model="reward.name" class="form-control" />
+            <span class="input-group-addon">{{ reward.pomos }}</span>
+			<span class="input-group-btn">
+				<button class="btn btn-danger" ng-click="removeReward($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+			</span>
+		</p>
+	</div>
+    
+    <div class="footer">
+      <div class="container text-right">
+        <p>...and sees the peak many times.</p>
+      </div>
+    </div>
+    
+</div>

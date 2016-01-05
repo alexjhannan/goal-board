@@ -14,6 +14,9 @@ angular.module('yeomanTutorialApp')
     // goals are stored locally, so pull that data
     var localStoreGoals = localStorageService.get('goals');
     
+    // same with completes (we pull once here, so that we dont pull multiple times later)
+    var localStoreCompletes = localStorageService.get('completes');
+    
     // set the scope's goals to equal the stored goals, or an empty array
     $scope.goals = localStoreGoals || [];
     
@@ -41,8 +44,19 @@ angular.module('yeomanTutorialApp')
       
     };
     
-      // remove element from list
+      // complete goal, removing it from goals and sending it to completes
     $scope.completeGoal = function(index){
+      // the index of 0 is chosen at the end of this line because splice returns an array of spliced elements, but we want to push through JUST the element (not an array)
+      var complete = $scope.goals.splice(index, 1)[0];
+      var completes = localStoreCompletes || [];
+      
+      completes.push(complete);
+      
+      localStorageService.set('completes', completes);
+    };
+    
+    // remove goal (is not sent to completes)
+    $scope.removeGoal = function(index){
       $scope.goals.splice(index, 1);
     };
     

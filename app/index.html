@@ -40,8 +40,8 @@
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Goal Board</a></li>
-              <li><a ng-href="#/about">Rewards</a></li>
-              <li><a ng-href="#/">Completions</a></li>
+              <li><a ng-href="#/completions">Completions</a></li>
+              <li><a ng-href="#/rewards">Rewards</a></li>
             </ul>
           </div>
         </div>
@@ -50,12 +50,6 @@
 
     <div class="container">
     <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container text-center">
-        <p>One step at a time.</p>
-      </div>
     </div>
 
 
@@ -90,7 +84,8 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/completions.js"></script>
+        <script src="scripts/controllers/rewards.js"></script>
         <!-- endbuild -->
 </body>
 </html>

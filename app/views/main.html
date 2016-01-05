@@ -1,5 +1,5 @@
 <div class="container">
-	<h2>Current Goals:</h2>
+	<h2>Goal Board</h2>
 	
 	<!-- form to add a new task -->
 			<!-- ng-submit binds a function to the form submission
@@ -27,7 +27,24 @@
             <span class="input-group-addon" ng-click="addPomo($index)"  style="cursor: pointer;">+</span>
 			<span class="input-group-btn">
 				<button class="btn btn-success" ng-click="completeGoal($index)" aria-label="Remove"><i class="glyphicon glyphicon-ok"></i></button>
+				<button class="btn btn-danger" ng-click="removeGoal($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
 			</span>
 		</p>
 	</div>
+    
+    <div class="footer">
+      <div class="container">
+        <p class="text-left">the man who moves mountains...</p>
+        <ul>
+            <li>Add goals to your goal board with the text box up top.</li>
+            <li>For every <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">pomodoro</a> round (25-35 minutes of work) you spend attempting a goal, add one to the counter.</li>
+            <ul><li>You've only got yourself to stop you from cheating.</li></ul>
+            <li>When you have finished your goal, click the green button to send that goal to your completions page.</li>
+            <ul><li>(If you make a mistake, remove a goal by clicking the red button - it won't be completed.)</li></ul>
+            <li>Rack up points by completing goals. See your completed goals on the completions page.</li>
+            <li>Go to the rewards page to spend your points on rewards.</li>
+        </ul>
+      </div>
+    </div>
+    
 </div>

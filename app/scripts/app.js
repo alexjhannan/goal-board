@@ -31,10 +31,15 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/completions', {
+        templateUrl: 'views/completions.html',
+        controller: 'CompletionsCtrl',
+        controllerAs: 'completions'
+      })
+      .when('/rewards', {
+          templateUrl: 'views/rewards.html',
+          controller: 'RewardsCtrl',
+          controllerAs: 'rewards'
       })
       .otherwise({
         redirectTo: '/'
