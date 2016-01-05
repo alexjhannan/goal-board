@@ -16,20 +16,41 @@ describe('Controller: MainCtrl', function () {
       // place here mocked dependencies
     });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.todos.length).toBe(0);
-  });
   
   it('should add items to a list', function (){
-    scope.todo = 1;
-    scope.addTodo();
-    expect(scope.todos.length).toBe(1);
+    scope.goal = 1;
+    scope.addGoal();
+    expect(scope.goals.length).toBe(1);
   });
   
   it('should remove items from an array based on index', function(){
-    scope.todos = ['1', '2', '3'];
-    scope.removeTodo(1);
-    expect(scope.todos).toEqual(['1', '3']);
+    scope.goal = 'this is a goal';
+    scope.addGoal();
+    scope.goal += '1';
+    scope.addGoal();
+    scope.completeGoal(1);
+    expect(scope.goals).toEqual([{ name: 'this is a goal', pomos: 0 }]);
+  });
+  
+  it('should increment current count by one based on index', function(){
+     scope.goal = 'this is a goal';
+     scope.addGoal();
+     scope.addPomo(0);
+     expect(scope.goals[0].pomos).toBe(1);
+  });
+  
+  it('should decrement current count by one based on index', function(){
+     scope.goal = 'this is a goal';
+     scope.addGoal();
+     scope.addPomo(0);
+     scope.subtractPomo(0);
+     expect(scope.goals[0].pomos).toBe(0);
+  });
+  
+  it('should not decrease count below 0', function(){
+     scope.goal = 'this is a goal';
+     scope.addGoal();
+     scope.subtractPomo(0);
+     expect(scope.goals[0].pomos).toBe(0);
   });
 });

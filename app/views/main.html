@@ -1,14 +1,14 @@
 <div class="container">
-	<h2>My Todos</h2>
+	<h2>Current Goals:</h2>
 	
 	<!-- form to add a new task -->
 			<!-- ng-submit binds a function to the form submission
 					 if no action attribute is present (like here), this also prevents the default action -->
-	<form role="form" ng-submit="addTodo()">
+	<form role="form" ng-submit="addGoal()">
 		<div class="row">
 			<!-- .input-group allows for inline buttons on input boxes -->
 			<div class="input-group">
-				<input type="text" ng-model="todo" placeholder="Add a task..." class="form-control" />
+				<input type="text" ng-model="goal" placeholder="Add a goal" class="form-control" />
 				<!-- .input-group-btn binds this btn to the input group in this div -->
 				<span class="input-group-btn">
 					<input type="submit" class="btn btn-primary" value="add" />
@@ -17,13 +17,16 @@
 		</div>
 	</form>
 	
-	<!-- list of current todos -->
-	<div ng-model="todos" ui-sortable>
-		<p class="input-group" ng-repeat="todo in todos" style="padding: 5px 10px; cursor: move;">
-			<input type="text" ng-model="todo" class="form-control" />
+	<!-- list of current goals -->
+	<div ng-model="goals" ui-sortable>
+		<p class="input-group" ng-repeat="goal in goals" style="padding: 5px 10px;">
+			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
+            <input type="text" ng-model="goal.name" class="form-control" />
+            <span class="input-group-addon" ng-click="subtractPomo($index)" style="cursor: pointer;">-</span>
+            <span class="input-group-addon">{{ goal.pomos }}</span>
+            <span class="input-group-addon" ng-click="addPomo($index)"  style="cursor: pointer;">+</span>
 			<span class="input-group-btn">
-				<!-- $index passes in the index of the current ng-repeat element -->
-				<button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
+				<button class="btn btn-success" ng-click="completeGoal($index)" aria-label="Remove"><i class="glyphicon glyphicon-ok"></i></button>
 			</span>
 		</p>
 	</div>

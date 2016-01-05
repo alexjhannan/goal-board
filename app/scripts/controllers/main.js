@@ -11,32 +11,50 @@ angular.module('yeomanTutorialApp')
   .controller('MainCtrl', function ($scope, localStorageService) {
     
     
-    // todos are stored locally, so pull that data
-    var localStoreTodos = localStorageService.get('todos');
+    // goals are stored locally, so pull that data
+    var localStoreGoals = localStorageService.get('goals');
     
-    // set the scope's todos to equal the stored todos, or an empty array
-    $scope.todos = localStoreTodos || [];
+    // set the scope's goals to equal the stored goals, or an empty array
+    $scope.goals = localStoreGoals || [];
     
-    // watch the scope's todos for changes, and immediately update stored todos if triggered
-    $scope.$watch('todos', function(){
-      localStorageService.set('todos', $scope.todos);
+    // watch the scope's goals for changes, and immediately update stored goals if triggered
+    $scope.$watch('goals', function(){
+      localStorageService.set('goals', $scope.goals);
     }, true);
     
-    // so, localStorageService 
+    // so, locally store things by setting and getting via localStorageService. cool.
+    // note: this is an injected dependency
     
-    // push the current todo into the array, and reset current todo
-    $scope.addTodo = function(){
+    // push the current goal into the array, and reset current goal
+    $scope.addGoal = function(){
       
-      // if todo is truthy (not an empty string)
-      if ($scope.todo){
-        $scope.todos.push($scope.todo);
-        $scope.todo = '';
+      // if goal is truthy (not an empty string)
+      if ($scope.goal){
+        // build goal object
+        var newGoal = {
+            name: $scope.goal,
+            pomos: 0
+        };
+        $scope.goals.push(newGoal);
+        $scope.goal = '';
       }
       
     };
     
       // remove element from list
-    $scope.removeTodo = function(index){
-      $scope.todos.splice(index, 1);
+    $scope.completeGoal = function(index){
+      $scope.goals.splice(index, 1);
+    };
+    
+    //fxns to add and subtract pomos
+    $scope.addPomo = function(index){
+        $scope.goals[index].pomos++;
+    };
+    
+    $scope.subtractPomo = function(index){
+        if ($scope.goals[index].pomos > 0){
+            $scope.goals[index].pomos--; 
+        }
+       
     };
   });
