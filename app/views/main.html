@@ -4,11 +4,11 @@
 	<!-- form to add a new task -->
 			<!-- ng-submit binds a function to the form submission
 					 if no action attribute is present (like here), this also prevents the default action -->
-	<form role="form" ng-submit="addGoal()">
+	<form role="form" ng-submit="addGoal()" class="spaced">
 		<div class="row">
 			<!-- .input-group allows for inline buttons on input boxes -->
 			<div class="input-group">
-				<input type="text" ng-model="goal" placeholder="Add a goal" class="form-control" />
+				<input type="text" ng-model="goal" placeholder="add a goal" class="form-control" />
 				<!-- .input-group-btn binds this btn to the input group in this div -->
 				<span class="input-group-btn">
 					<input type="submit" class="btn btn-primary" value="add" />
@@ -22,20 +22,24 @@
 		<p class="input-group" ng-repeat="goal in goals" style="padding: 5px 10px;">
 			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
             <input type="text" ng-model="goal.name" class="form-control" />
-            <span class="input-group-addon" ng-click="subtractPomo($index)" style="cursor: pointer;">-</span>
+            <span class="input-group-addon addon-sm" ng-click="subtractPomo($index)" style="cursor: pointer;">-</span>
             <span class="input-group-addon">{{ goal.pomos }}</span>
-            <span class="input-group-addon" ng-click="addPomo($index)"  style="cursor: pointer;">+</span>
+            <span class="input-group-addon addon-sm" ng-click="addPomo($index)"  style="cursor: pointer;">+</span>
 			<span class="input-group-btn">
 				<button class="btn btn-success" ng-click="completeGoal($index)" aria-label="Remove"><i class="glyphicon glyphicon-ok"></i></button>
 				<button class="btn btn-danger" ng-click="removeGoal($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
 			</span>
-		</p>
+        </p>
 	</div>
     
     <div class="footer">
       <div class="container">
         <p class="text-left">the man who moves mountains...</p>
-        <ul>
+      </div>
+      <hr />
+      <div class="container">
+          <h5>Instructions</h5>
+          <ul>
             <li>Add goals to your goal board with the text box up top.</li>
             <li>For every <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">pomodoro</a> round (25-35 minutes of work) you spend attempting a goal, add one to the counter.</li>
             <ul><li>You've only got yourself to stop you from cheating.</li></ul>

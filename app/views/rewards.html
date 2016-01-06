@@ -1,22 +1,71 @@
 <div class="container">
     <h2>Rewards</h2>
-    <p>Current Spendable Points: {{ count - spent }}</p>
+    <p>Current spendable points: {{ count - spent }}</p>
 
-
-    <div ng-model="rewards" ui-sortable>
-		<p class="input-group" ng-repeat="reward in rewards" style="padding: 5px 10px;">
+    <div ng-model="unpurchased" ui-sortable>
+		<p class="input-group" ng-repeat="reward in unpurchased" style="padding: 5px 10px;">
 			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
             <input type="text" ng-model="reward.name" class="form-control" />
-            <span class="input-group-addon">{{ reward.pomos }}</span>
+            <span class="input-group-addon"><a href="{{reward.url}}" target="_blank"><i class="glyphicon glyphicon-link"></i></a></span>
+            <span class="input-group-addon">{{ reward.cost }}</span>
 			<span class="input-group-btn">
-				<button class="btn btn-danger" ng-click="removeReward($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+				<button class="btn btn-success" ng-click="purchaseUnpurchased($index)" aria-label="Remove"><i class="glyphicon glyphicon-shopping-cart"></i></button>                
+				<button class="btn btn-danger" ng-click="removeUnpurchased($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
 			</span>
 		</p>
 	</div>
     
+    <hr />
+    
+    <h2>Add a Reward</h2>
+    
+    <form role="form" ng-submit="addUnpurchased()">
+		<div class="row">
+			<div class="input-group spaced">
+                <span class="input-group-addon addon-lg">Name</span>
+				<input type="text" ng-model="reward.name" placeholder="name your reward" class="form-control" required />
+                <span class="input-group-addon addon-lg">Cost</span>
+                <input type="number" ng-model="reward.cost" class="form-control" />
+            </div>
+            <div class="input-group spaced">
+                <span class="input-group-addon addon-lg">URL</span>
+				<input type="url" ng-model="reward.url" placeholder="ex: https://en.wikipedia.org/wiki/Bouncy_ball" class="form-control" novalidate />
+			    <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="add" />
+                </span>
+            </div>
+		</div>
+	</form>
+    
+    <hr />
+    
+    <h2>Purchased Rewards</h2>
+    <div ng-model="purchased" ui-sortable>
+		<p class="input-group" ng-repeat="reward in purchased" style="padding: 5px 10px;">
+			<span class="input-group-addon" style="cursor: move;"><i class="glyphicon glyphicon-sort"></i></span>
+            <input type="text" ng-model="reward.name" class="form-control" />
+            <span class="input-group-addon"><a href="{{reward.url}}" target="_blank"><i class="glyphicon glyphicon-link"></i></a></span>
+            <span class="input-group-addon">{{ reward.cost }}</span>
+			<span class="input-group-btn">
+				<button class="btn btn-danger" ng-click="removePurchased($index)" aria-label="Remove"><i class="glyphicon glyphicon-remove"></i></button>
+			</span>
+		</p>
+	</div>
+    
+    
     <div class="footer">
-      <div class="container text-right">
-        <p>...and sees the peak many times.</p>
+      <div class="container">
+        <p class="text-right">...and sees the peak many times.</p>
+      </div>
+      <hr />
+      <div class="container">
+          <h5>Instructions</h5>
+          <ul>
+            <li>Add a reward name, (optional) attach a cost (in pomodoro rounds), and (optional) include a URL address to start populating your rewards list!</li>
+            <li>Purchase rewards by pressing the green button. You'll use your points gained through completing goals.</li>
+            <li>See your purchased rewards in the second list.</li>
+            <li>Delete any rewards (purchased or otherwise) by pressing the red button.</li>
+        </ul>
       </div>
     </div>
     
