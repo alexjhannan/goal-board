@@ -65,6 +65,7 @@ angular.module('yeomanTutorialApp')
     // remove purchased reward (will change point count)
     $scope.removePurchased = function(index){
         $scope.purchased.splice(index, 1);
+        $scope.spent = $scope.countSpent();
     };
     
     // 'purchase' a reward by sending it to the purchased array
